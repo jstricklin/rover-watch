@@ -5,6 +5,19 @@ const key = "&api_key=81Uv2Mrsi3Ovgn4L6FzNVwVdKhOXesellboQvDbW"
 document.addEventListener("DOMContentLoaded", render())
 
 function render(){
+    let faveList = document.querySelector(".faveList")
+    document.querySelector("#addFave").addEventListener("click",()=>{
+        let faveRover = document.createElement("p")
+        faveRover.innerHTML = document.querySelector("#rover-select").value
+
+        let faveDate = document.createElement("p")
+        faveDate.innerHTML = document.querySelector("#date").value
+        let fave = document.createElement("li")
+
+        fave.appendChild(faveRover)
+        fave.appendChild(faveDate)
+        faveList.appendChild(fave)
+    })
     document.querySelector("#camBtn").addEventListener("click", ()=>{
         let imgContainer = document.querySelector(".image-container")
         while (imgContainer.firstElementChild){

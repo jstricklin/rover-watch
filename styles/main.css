@@ -77,7 +77,7 @@ p{
 }
 .main {
     margin-bottom: 1em;
-    margin-top: 1em;
+    /* margin-top: 1em; */
     margin-right: 3em;
     margin-left: 3em;
     background-color: rgb(0,0,0,.75);
@@ -95,7 +95,8 @@ p{
     align-items:center;
 }
 .main p {
-    text-indent: 1em;
+    /* text-indent: 1em; */
+    text-align: center;
 }
 .form-container{
     display:flex;
@@ -126,4 +127,7 @@ code {
 }
 .fave-container{
    margin-left: 1em;  
+}
+.fave-container li {
+    margin-top: 0.5em;
 }
