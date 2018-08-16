@@ -108,6 +108,22 @@ p{
 }
 .rover-img {
     margin: 1em;
-    height: 75%;
-    width: 75%;
+    height: 300px;
+    width: 300px;
+}
+form {
+    display: flex;
+    align-items:center;
+    flex-direction: row;
+    justify-content: center;
+}
+#rover-select {
+    /* margin-right: 1em; */
+}
+code {
+    display: flex;
+    text-align: center;
+}
+.fave-container{
+   margin-left: 1em;  
 }

@@ -1,21 +1,32 @@
-const baseURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key="
-const key = "81Uv2Mrsi3Ovgn4L6FzNVwVdKhOXesellboQvDbW"
+// const baseURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-06-03&api_key="
+const baseURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/"
+const endURL = "/photos?earth_date="
+const key = "&api_key=81Uv2Mrsi3Ovgn4L6FzNVwVdKhOXesellboQvDbW"
 document.addEventListener("DOMContentLoaded", render())
 
 function render(){
-    console.log(document.querySelector("#camBtn"))
     document.querySelector("#camBtn").addEventListener("click", ()=>{
-        axios.get(`${baseURL}${key}`)
+        let imgContainer = document.querySelector(".image-container")
+        while (imgContainer.firstElementChild){
+            imgContainer.removeChild(imgContainer.firstElementChild)
+        }
+        let date = document.querySelector("#date").value
+        let rover = document.querySelector("#rover-select").value
+        axios.get(`${baseURL}${rover}${endURL}${date}${key}`)
             .then(res => {
-                console.log(res.data)
-                let imgContainer = document.querySelector(".image-container")
+                if (res.data.photos.length<1){
+                    console.log(res.data.photos)
+                    alert(`Sorry, no images found for ${rover} on ${date}. Please try again.`)
+                }
+
                 res.data.photos.map(photo => {
-                    console.log(photo)
                     let img = document.createElement("img")
                     img.src = photo.img_src
                     img.className="rover-img"
                     imgContainer.appendChild(img)
                 })
+            }).catch(err => {
+                alert(`Sorry, no images found for ${rover} on ${date}. Please try again.`)
             })
     })
 }

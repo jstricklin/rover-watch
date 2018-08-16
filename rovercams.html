@@ -39,7 +39,28 @@
                     <div class="container">
                         <div class="columns">
                             <div class="column is-8 is-offset-2">
-                                <h2 class="main-title has-text-centered">This will soon be a simple form to allow date and rover choice</h2>
+                                <h2 class="main-title has-text-centered">RoverCam Options</h2>
+                                <form method="post">
+                                    <div>
+                                        
+                                        <label for="rover-select">Select a Rover:</label>
+                                        <select id="rover-select">
+                                            <option value="curiosity">Curiosity</option>
+                                            <option value="opportunity">Opportunity</option>
+                                            <option value="spirit">Spirit</option>
+                                        </select>
+                                    </div>
+                                    <div>      
+                                        <label for="cam-date">Select a Date:</label>
+                                        <input type="date" name="cam-date" id="date" value="08-14-2018" />
+                                    </div>
+                                    <div class="fave-container">
+                                        <label>Favorites</label>
+                                        <ul class="fave-list">
+                                            <li>+</li>        
+                                        </ul>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
@@ -53,9 +74,10 @@
                         </div>
                            <div class="columns">
                                <div class="column is-8 is-offset-2">
+                                   <code id="error" style="display:none">Sorry! No Images for selected Options. Please try again.</code>
                                    <div class="image-container">
-                                       
                                    </div>
+
                                </div>
                            </div>
                         </div>
