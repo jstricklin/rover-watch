@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>RoverCams</title>
+        <link rel="stylesheet" href="styles/normalize.css" type="text/css" />
+        <link rel="stylesheet" href="styles/bulma.css" type="text/css" />
+        <link rel="stylesheet" href="styles/main.css" type="text/css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script defer src="public/rovers.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <main>
+            <div class="hero is-halfheight" >
+                <section class="hero-head">
+                    <div class="container">
+                        <div class"columns">
+                            <div class="column is-8 is-offset-2">
+                                <div class="brand"> 
+                                     <div class="circle"> 
+                                        <i class="fas fa-user-astronaut has-text-white fa-3x"></i>
+                                     </div>
+                                    <h1 class="lead">RoverWatch</h1>
+                                </div>
+                            </div>
+                            <div class="column is-8 is-offset-2">
+                                <nav class="main-nav">
+                                    <ul>
+                                        <li><a href="index.html">Go Back To Main Page</a></li>
+                                    </ul>
+                                </nav> 
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="main">
+                    <div class="container">
+                        <div class="columns">
+                            <div class="column is-8 is-offset-2">
+                                <h2 class="main-title has-text-centered">RoverCam Options</h2>
+                                <form method="post">
+                                    <div>
+                                        <label for="rover-select">Select a Rover:</label>
+                                        <select id="rover-select">
+                                            <option value="curiosity">Curiosity</option>
+                                            <option value="opportunity">Opportunity</option>
+                                            <option value="spirit">Spirit</option>
+                                        </select>
+                                    </div>
+                                    <div>      
+                                        <label for="cam-date">Select a Date:</label>
+                                        <input type="date" name="cam-date" id="date" value="08-14-2018" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div>
+                                <div class="fave-container">
+                                    <label>Favorites</label>
+                                    <ul class="faveList">
+                                        <li id="addFave"><p>add favorite<p></li>        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                           <div class="column is-8 is-offset-2">
+                               <div class="form-container">
+                                   <button id="camBtn">Click here for Rover Cams</button>
+                               </div>
+                           </div>
+                        </div>
+                           <div class="columns">
+                               <div class="column is-8 is-offset-2">
+                                   <code id="error" style="display:none">Sorry! No Images for selected Options. Please try again.</code>
+                                   <div class="image-container">
+                                   </div>
+
+                               </div>
+                           </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </body>
+</html>
