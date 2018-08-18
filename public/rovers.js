@@ -5,20 +5,45 @@ const key = "&api_key=81Uv2Mrsi3Ovgn4L6FzNVwVdKhOXesellboQvDbW"
 document.addEventListener("DOMContentLoaded", render())
 
 function render(){
-    let faveList = document.querySelector(".faveList")
+    const faveList = document.querySelector(".faveList")
+    const faveText = document.querySelector(".faveTitle").innerHTML
+    updateCount(faveText)
     document.querySelector("#addFave").addEventListener("click",()=>{
-        let faveRover = document.createElement("p")
-        faveRover.innerHTML = document.querySelector("#rover-select").value
-
-        let faveDate = document.createElement("p")
-        faveDate.innerHTML = document.querySelector("#date").value
-        let fave = document.createElement("li")
-
-        fave.appendChild(faveRover)
-        fave.appendChild(faveDate)
+        let faveRover = document.querySelector("#rover-select").value
+        let faveDate = document.querySelector("#date").value
+        if (faveDate === ""){
+            return
+        } else {
+            for (let i = 0; i < document.querySelectorAll(".faveList option").length; i++){
+                if (`${faveRover} - ${faveDate}` === faveList.options[i].value){
+                    return;
+                }
+            }
+        }
+        let fave = document.createElement("option")
+        fave.id = `${faveRover}-${faveDate}`
+        fave.setAttribute("data-rover", faveRover)
+        fave.setAttribute("data-date", faveDate)
+        fave.innerHTML = `${faveRover} - ${faveDate}`
         faveList.appendChild(fave)
+        updateCount(faveText)
+    })
+    document.querySelector("#removeFave").addEventListener("click",()=>{
+        let selected = faveList.options[faveList.selectedIndex]
+        if (selected == undefined || !selected.hasAttribute("data-rover") || !selected.hasAttribute("data-date")){
+            return
+        }
+        selected.remove()
+        updateCount(faveText)
+        faveList.options[0].selected = true;
+    })
+    document.querySelector(".faveList").addEventListener("change", ()=>{
+        document.querySelector("#date").value = faveList.options[faveList.options.selectedIndex].getAttribute("data-date")
+        document.querySelector("#rover-select").value = faveList.options[faveList.options.selectedIndex].getAttribute("data-rover")
+
     })
     document.querySelector("#camBtn").addEventListener("click", ()=>{
+        faveList.options[0].selected = true;
         let imgContainer = document.querySelector(".image-container")
         while (imgContainer.firstElementChild){
             imgContainer.removeChild(imgContainer.firstElementChild)
@@ -28,7 +53,6 @@ function render(){
         axios.get(`${baseURL}${rover}${endURL}${date}${key}`)
             .then(res => {
                 if (res.data.photos.length<1){
-                    console.log(res.data.photos)
                     alert(`Sorry, no images found for ${rover} on ${date}. Please try again.`)
                 }
 
@@ -42,4 +66,8 @@ function render(){
                 alert(`Sorry, no images found for ${rover} on ${date}. Please try again.`)
             })
     })
+}
+function updateCount(faveText) {
+    const favesLength = document.querySelectorAll(".faveList option").length - 1
+    document.querySelector(".faveTitle").innerHTML = `${faveText}${favesLength}`
 }

@@ -112,7 +112,7 @@ p{
     display:block;
     margin: 1em;
     height: 400px;
-    width: 400px;
+    min-width: 400px;
 }
 form {
     display: flex;
@@ -121,7 +121,7 @@ form {
     justify-content: center;
 }
 #rover-select {
-    /* margin-right: 1em; */
+    margin-right: 1em;
 }
 code {
     display: flex;
@@ -135,6 +135,10 @@ code {
     margin-left: 1em;  
     margin-right: 1em;
 }
-.fave-container li {
-    margin-top: 0.5em;
+.fave-container {
+    margin-top: 2em;
+}
+
+.fave-container button {
+    margin-top: 1em;
 }
