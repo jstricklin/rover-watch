@@ -25,6 +25,7 @@ function render(){
         fave.setAttribute("data-rover", faveRover)
         fave.setAttribute("data-date", faveDate)
         fave.innerHTML = `${faveRover} - ${faveDate}`
+        localStorage.setItem(fave)
         faveList.appendChild(fave)
         updateCount(faveText)
     })
