@@ -1,10 +1,10 @@
-body {
+html, body {
     color: white;
     background: black no-repeat;
     background-size: contain;
     background-image:-webkit-linear-gradient(transparent,rgb(75,0,0)),url("../assets/mars-bg.jpg");
     background-attachment: fixed;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
     padding: 0;
 }
@@ -19,6 +19,7 @@ main {
     border-radius: 10px;
     margin-top:0;
     padding-bottom: 5em;
+    margin-bottom: 10em;
 }
 bold {
     font-weight: bold;
@@ -112,8 +113,8 @@ p{
 .rover-img {
     display:block;
     margin: 1em;
-    height: 400px;
-    min-width: 200px;
+    max-height: 300px;
+    width: auto;
 }
 .form-container {
     display: flex;
@@ -172,4 +173,22 @@ code {
 select.faveList {
     align-self: center;
     max-width: 200px;
+}
+@media screen and (min-width: 375){
+    .rover-img {
+        max-height: 250px;
+        width: auto;
+    }
+}
+@media screen and (min-width: 680px, max-width: 799px){
+    .rover-img { 
+        max-height: 450px;
+        width: auto;
+    }
+}
+@media screen and (min-width: 800px){
+    .rover-img { 
+        max-height: 550px;
+        width: auto;
+    }
 }
