@@ -7,33 +7,24 @@ document.addEventListener("DOMContentLoaded", render())
 function render(){
     const faveList = document.querySelector(".faveList")
     const faveText = document.querySelector(".faveTitle").innerHTML
+    checkLocalStorage(faveList, faveText)
     updateCount(faveText)
+
     document.querySelector("#addFave").addEventListener("click",()=>{
         let faveRover = document.querySelector("#rover-select").value
         let faveDate = document.querySelector("#date").value
-        if (faveDate === ""){
-            return
-        } else {
-            for (let i = 0; i < document.querySelectorAll(".faveList option").length; i++){
-                if (`${faveRover} - ${faveDate}` === faveList.options[i].value){
-                    return;
-                }
-            }
-        }
-        let fave = document.createElement("option")
-        fave.id = `${faveRover}-${faveDate}`
-        fave.setAttribute("data-rover", faveRover)
-        fave.setAttribute("data-date", faveDate)
-        fave.innerHTML = `${faveRover} - ${faveDate}`
-        localStorage.setItem(fave)
-        faveList.appendChild(fave)
-        updateCount(faveText)
+
+        addFavorite(faveList, faveText, faveRover, faveDate, true)
+
     })
     document.querySelector("#removeFave").addEventListener("click",()=>{
         let selected = faveList.options[faveList.selectedIndex]
         if (selected == undefined || !selected.hasAttribute("data-rover") || !selected.hasAttribute("data-date")){
             return
         }
+        // adding localStorage delete below
+        let tempArr = JSON.parse(localStorage.getItem(selected.getAttribute("data-rover"))).filter(date => date !== selected.getAttribute("data-date"))
+        localStorage.setItem(selected.getAttribute("data-rover"), JSON.stringify(tempArr))
         selected.remove()
         updateCount(faveText)
         faveList.options[0].selected = true;
@@ -71,4 +62,46 @@ function render(){
 function updateCount(faveText) {
     const favesLength = document.querySelectorAll(".faveList option").length - 1
     document.querySelector(".faveTitle").innerHTML = `${faveText}${favesLength}`
+}
+function checkLocalStorage(faveList, faveText){
+    console.log(localStorage.length)
+    if (localStorage.length > 0) {
+        Object.keys(localStorage).map(key => {
+            JSON.parse(localStorage.getItem(key)).map(val =>{
+                console.log(`${key} date is ${val}`)
+                addFavorite(faveList, faveText, key, val, false)
+            })
+
+        })
+    }
+}
+function addFavorite(faveList, faveText, faveRover, faveDate, newEntry = false){
+        // code below ignores blank and duplicate entries
+        if (faveDate === ""){
+            return
+        } else {
+            for (let i = 0; i < document.querySelectorAll(".faveList option").length; i++){
+                if (`${faveRover} - ${faveDate}` === faveList.options[i].value){
+                    return;
+                }
+            }
+        }
+        // valid entry below
+        let fave = document.createElement("option")
+        fave.id = `${faveRover}-${faveDate}`
+        fave.setAttribute("data-rover", faveRover)
+        fave.setAttribute("data-date", faveDate)
+        fave.innerHTML = `${faveRover} - ${faveDate}`
+
+        faveList.appendChild(fave)
+        updateCount(faveText)
+    if (newEntry){
+        // local storage stuff below
+        console.log(localStorage.getItem(faveRover))
+        let dateArr = JSON.parse(localStorage.getItem(faveRover)) || []
+        console.log(dateArr)
+        dateArr.push(faveDate)
+        console.log(dateArr)
+        localStorage.setItem(faveRover,JSON.stringify(dateArr))
+    }
 }
