@@ -3,7 +3,10 @@ body {
     background: black no-repeat;
     background-size: contain;
     background-image:-webkit-linear-gradient(transparent,rgb(75,0,0)),url("../assets/mars-bg.jpg");
+    background-attachment: fixed;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 a:hover{
     color:white;
@@ -12,7 +15,8 @@ a:hover{
 }
 main {
     background-color:rgb(0,0,0,.4);
-    min-height:100vh;
+    /* min-height:100vh; */
+    border-radius: 10px;
     margin-top:0;
     padding-bottom: 5em;
 }
@@ -80,24 +84,25 @@ p{
     margin-left: 1em;
 }
 .main {
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     margin-top: 2em;
     margin-right: 3em;
     margin-left: 3em;
     background-color: rgb(0,0,0,.75);
     padding-top: 2em;
     padding-bottom: 2em;
+    border-radius: 10px;
 }
 .main .container {
     display: flex;
     flex-direction:column;
-    justify-content:flex-start;
+    justify-content:center;
+    align-items: center;
     min-width: 400px;
     padding-right: 1em;
     padding-left: 1em;
     margin-right: 1em;
     margin-padding: 1em;
-    /* align-items:center; */
 }
 .image-container {
     display:flex;
@@ -108,16 +113,38 @@ p{
     display:block;
     margin: 1em;
     height: 400px;
-    min-width: 400px;
+    min-width: 200px;
 }
-form {
+.form-container {
     display: flex;
+    flex-direction: row;
     align-items:center;
     justify-content: center;
-    flex-direction: row;
+
+}
+fieldset {
+    padding: 2em;    
+    padding-right: 1em;
+    padding-left: 1em;
+    display: flex;
+    justify-content:center;
+    justify-content: base;
+    border-radius: 10px;
+} 
+legend {
+    padding: .2em;
+    padding-right: .5em;
+    padding-left: .5em;
+    text-align: center;
+    border: 1px white solid;
+    border-radius: 20px;
 }
 #rover-select {
     margin-right: 1em;
+}
+.rover-settings{
+    display: flex;
+    justify-content: center;
 }
 code {
     display: flex;
@@ -137,7 +164,12 @@ code {
 
 .fave-container button {
     margin-top: 1em;
+    font-size: 80%;
 }
 .main-title {
     margin-bottom:1em;
+}
+select.faveList {
+    align-self: center;
+    max-width: 200px;
 }

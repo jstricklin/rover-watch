@@ -35,7 +35,8 @@ function render(){
 
     })
     document.querySelector("#camBtn").addEventListener("click", ()=>{
-        faveList.options[0].selected = true;
+        //reset fave select on ROVER CAM CLICK below
+        // faveList.options[0].selected = true;
         let imgContainer = document.querySelector(".image-container")
         while (imgContainer.firstElementChild){
             imgContainer.removeChild(imgContainer.firstElementChild)

@@ -15,77 +15,76 @@
         <div class="container">
             <section class="columns is-centered">
                 <main class="column is-7">
-                    <div class="hero" >
-                        <section class="hero-head">
-                            <!-- <div class="container"> -->
-                                <div class"columns">
-                                    <div class="column is-8 is-offset-2">
-                                        <div class="brand"> 
-                                             <div class="circle"> 
-                                                <i class="fas fa-user-astronaut has-text-white fa-3x"></i>
-                                             </div>
-                                            <h1 class="lead">RoverWatch</h1>
-                                        </div>
-                                    </div>
-                                    <div class="column is-8 is-offset-2">
-                                        <nav class="main-nav">
-                                            <ul>
-                                                <li><a href="index.html">Go Back To Main Page</a></li>
-                                            </ul>
-                                        </nav> 
-                                    </div>
-                                </div>
-                            <!-- </div> -->
-                        </section>
-                    </div>
-                    <section class="main">
+                <div class="hero" >
+                    <section class="hero-head">
                         <!-- <div class="container"> -->
-                           <div class="columns">
-                                <div class="column is-8 is-offset-2">
-                                    <h2 class="main-title has-text-centered">RoverCam Options</h2>
-                                    <form method="post">
+                    <div class"columns">
+                        <div class="column is-8 is-offset-2">
+                            <div class="brand"> 
+                                <div class="circle"> 
+                                    <i class="fas fa-user-astronaut has-text-white fa-3x"></i>
+                                </div>
+                                <h1 class="lead">RoverWatch</h1>
+                            </div>
+                        </div>
+                        <div class="column is-8 is-offset-2">
+                            <nav class="main-nav">
+                                <ul>
+                                    <li><a href="index.html">Go Back To Main Page</a></li>
+                                </ul>
+                            </nav> 
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                    </section>
+                </div>
+                <section class="main">
+                    <!-- <div class="container"> -->
+                    <div class="columns">
+                        <div class="column is-8 is-offset-2">
+                            <h2 class="main-title has-text-centered">RoverCam Options</h2>
+                            <fieldset name="select-fields">
+                                <legend for="select-fields"><a>Pick <bold>Rover</bold> and <bold>Date</bold> below</a></legend>
+                                <div class="rover-settings">
+                                    <select id="rover-select">
+                                        <option value="curiosity">Curiosity</option>
+                                        <option value="opportunity">Opportunity</option>
+                                        <option value="spirit">Spirit</option>
+                                    </select>
+                                    <input type="date" name="cam-date" id="date" value="2018-08-14" />
+                                </div>
+                                <div>
+                                    <div class="fave-container">
+                                        <select class="faveList">
+                                            <option selected disabled class="faveTitle">Favorite Dates - </option>
+                                        </select>
                                         <div>
-                                            <label for="rover-select">Select a Rover:</label>
-                                            <select id="rover-select">
-                                                <option value="curiosity">Curiosity</option>
-                                                <option value="opportunity">Opportunity</option>
-                                                <option value="spirit">Spirit</option>
-                                            </select>
-                                        </div>
-                                        <div class="has-text-centered">      
-                                            <label for="cam-date">Select a Date:</label>
-                                            <input type="date" name="cam-date" id="date" value="2018-08-14" />
-                                        </div>
-                                    </form>
-                                    <div>
-                                        <div class="fave-container">
-                                            <select class="faveList">
-                                                <option selected disabled class="faveTitle">Favorite Dates - </option>
-                                            </select>
-                                            <div>
-                                                <button id="addFave">add fave</button>        
-                                                <button id="removeFave">remove fave</button>        
-                                            </div>
+
+                                            <button id="addFave">add fave</button>        
+                                            <button id="removeFave">remove fave</button>        
                                         </div>
                                     </div>
                                 </div>
-                           </div>
-                           <div class="columns">
-                               <div class="column is-8 is-offset-2">
-                                   <div class="form-container">
-                                       <button id="camBtn"><h2>Click here for Rover Cams<h2></button>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="columns">
-                               <div class="column is-8 is-offset-2">
-                                   <code id="error" style="display:none">Sorry! No Images for selected Options. Please try again.</code>
-                                   <div class="image-container">
-                                   </div>
-                               </div>
-                           </div>
-                        <!-- </div> -->
-                    </section>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column is-8 is-offset-2">
+                            <div class="form-container">
+                                <button id="camBtn"><h2>Click here for Rover Cams<h2></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column is-8 is-offset-2">
+                            <code id="error" style="display:none">Sorry! No Images for selected Options. Please try again.</code>
+                            <div class="image-container">
+                            </div>
+                        </div>
+                    </div>
+                            </fieldset>
+
+                            <!-- </div> -->
+                </section>
                 </main>
             </section>
         </div>
