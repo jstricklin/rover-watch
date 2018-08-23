@@ -45,26 +45,31 @@
                             <h2 class="main-title has-text-centered">RoverCam Options</h2>
                             <fieldset name="select-fields">
                                 <legend for="select-fields"><a>Pick <bold>Rover</bold> and <bold>Date</bold> below</a></legend>
+
+
                                 <div class="rover-settings">
                                     <select id="rover-select">
                                         <option value="curiosity">Curiosity</option>
                                         <option value="opportunity">Opportunity</option>
                                         <option value="spirit">Spirit</option>
                                     </select>
-                                    <input type="date" name="cam-date" id="date" value="2018-08-14" />
+                                    <input type="date" onkeydown="return false"name="cam-date" id="date" min="2004-06-10" />
+                                </div>
+                                <p id="dateTxt">most recent images were likely <bold>two</bold> days ago</p>
+                                <div id="rover-status">
+                                
                                 </div>
                                 <div>
                                     <div class="fave-container">
                                         <select class="faveList">
                                             <option selected disabled class="faveTitle">Favorite Dates - </option>
                                         </select>
-                                        <div>
-
-                                            <button id="addFave">add fave</button>        
-                                            <button id="removeFave">remove fave</button>        
-                                        </div>
+                                    <div>
+                                        <button id="addFave">add fave</button>        
+                                        <button id="removeFave">remove fave</button>        
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                     <div class="columns">
@@ -76,7 +81,7 @@
                     </div>
                     <div class="columns">
                         <div class="column is-8 is-offset-2">
-                            <code id="error" style="display:none">Sorry! No Images for selected Options. Please try again.</code>
+                            <div id="info" style="display:none"><h3>Whoops!</h3></br><p> No Images for selected date. Please try again.</p></div>
                             <div class="image-container">
                             </div>
                         </div>

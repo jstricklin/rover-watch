@@ -7,13 +7,36 @@ document.addEventListener("DOMContentLoaded", render())
 function render(){
     const faveList = document.querySelector(".faveList")
     const faveText = document.querySelector(".faveTitle").innerHTML
+    const info = document.querySelector("#info")
+
+    const date = document.querySelector("#date")
+
+    updateStatus("Online","has-text-success")
     checkLocalStorage(faveList, faveText)
     updateCount(faveText)
+    date.value = todaysDate()
+    date.setAttribute("max",todaysDate())
+    document.querySelector("#rover-select").addEventListener("change",()=>{
 
+        let rover = document.querySelector("#rover-select").value
+        switch (rover) {
+            case "curiosity" :
+                date.value = todaysDate();
+                updateStatus("Online", "has-text-success")
+                break
+            case "opportunity" :
+                date.value = '2018-03-16'
+                updateStatus("Hibernating due to massive Dust Storm - June/12/2018", "has-text-warning")
+                break
+            case "spirit" :
+                date.value = '2009-11-06'
+                updateStatus("Offline since March 22, 2010", "has-text-danger")
+                break
+        }
+    })
     document.querySelector("#addFave").addEventListener("click",()=>{
         let faveRover = document.querySelector("#rover-select").value
         let faveDate = document.querySelector("#date").value
-
         addFavorite(faveList, faveText, faveRover, faveDate, true)
 
     })
@@ -35,18 +58,16 @@ function render(){
 
     })
     document.querySelector("#camBtn").addEventListener("click", ()=>{
-        //reset fave select on ROVER CAM CLICK below
-        // faveList.options[0].selected = true;
         let imgContainer = document.querySelector(".image-container")
         while (imgContainer.firstElementChild){
             imgContainer.removeChild(imgContainer.firstElementChild)
         }
-        let date = document.querySelector("#date").value
+        let dateVal = document.querySelector("#date").value
         let rover = document.querySelector("#rover-select").value
-        axios.get(`${baseURL}${rover}${endURL}${date}${key}`)
+        axios.get(`${baseURL}${rover}${endURL}${dateVal}${key}`)
             .then(res => {
                 if (res.data.photos.length<1){
-                    alert(`Sorry, no images found for ${rover} on ${date}. Please try again.`)
+                    info.style.display = "block"
                 }
 
                 res.data.photos.map(photo => {
@@ -56,7 +77,7 @@ function render(){
                     imgContainer.appendChild(img)
                 })
             }).catch(err => {
-                alert(`Sorry, no images found for ${rover} on ${date}. Please try again.`)
+                info.style.display = "block"
             })
     })
 }
@@ -65,11 +86,9 @@ function updateCount(faveText) {
     document.querySelector(".faveTitle").innerHTML = `${faveText}${favesLength}`
 }
 function checkLocalStorage(faveList, faveText){
-    console.log(localStorage.length)
     if (localStorage.length > 0) {
         Object.keys(localStorage).map(key => {
             JSON.parse(localStorage.getItem(key)).map(val =>{
-                console.log(`${key} date is ${val}`)
                 addFavorite(faveList, faveText, key, val, false)
             })
 
@@ -98,11 +117,28 @@ function addFavorite(faveList, faveText, faveRover, faveDate, newEntry = false){
         updateCount(faveText)
     if (newEntry){
         // local storage stuff below
-        console.log(localStorage.getItem(faveRover))
         let dateArr = JSON.parse(localStorage.getItem(faveRover)) || []
-        console.log(dateArr)
         dateArr.push(faveDate)
-        console.log(dateArr)
         localStorage.setItem(faveRover,JSON.stringify(dateArr))
     }
+}
+function todaysDate(){
+    let today = new Date()
+    let dd = today.getDate()
+    let mm = today.getMonth() + 1
+    let yyyy = today.getFullYear()
+    if (dd < 10){
+        dd = '0'+dd
+    }
+    if (mm < 10){
+        mm = '0'+mm
+    }
+    today = `${yyyy}-${mm}-${dd}`
+    return today
+}
+function updateStatus(roverStatus, color){
+
+    let status = document.querySelector("#rover-status")
+    let statusTxt = `Rover Status: `
+    status.innerHTML = `<p>${statusTxt}<br/><bold class=${color}>${roverStatus}</bold></p>`
 }

@@ -34,6 +34,10 @@ h2 {
     font-weight: 700;
     font-size: 16pt;
 }
+h3 {
+    font-size: 14pt;
+    font-weight: bold;
+}
 p, a {
     font-family: sans-serif;
     color: white;
@@ -147,7 +151,7 @@ legend {
     display: flex;
     justify-content: center;
 }
-code {
+#info {
     display: flex;
     text-align: center;
 }
@@ -160,7 +164,7 @@ code {
     margin-right: 1em;
 }
 .fave-container {
-    margin-top: 2em;
+    margin-top: 1em;
 }
 
 .fave-container button {
@@ -191,4 +195,11 @@ select.faveList {
         max-height: 500px;
         width: auto;
     }
+}
+#rover-status p {
+    margin-top: 1em;
+    font-size: 8pt;
+}
+#dateTxt {
+    font-size: 8pt;
 }
