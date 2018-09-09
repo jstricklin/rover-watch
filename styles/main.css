@@ -8,10 +8,14 @@ html, body {
     margin: 0;
     padding: 0;
 }
-a:hover{
+a {
+    font-weight: 100;
+}
+.main-nav a:hover{
     color:white;
     text-shadow: 0 0 15px white;
-    font-weight:bold;
+    font-weight:550;
+    text-decoration: none;
 }
 main {
     background-color:rgb(0,0,0,.4);
@@ -21,7 +25,7 @@ main {
     padding-bottom: 5em;
     margin-bottom: 10em;
 }
-bold {
+#bold {
     font-weight: bold;
 }
 h1 {
@@ -66,7 +70,7 @@ p{
     margin-right: 1em;
 }
 /* .hero{ */
-    /* margin-botton: 2em; */   
+/* margin-botton: 2em; */   
 /* } */
 .main-nav {
     display:flex;
@@ -90,11 +94,11 @@ p{
 }
 .main {
     margin-bottom: 2em;
-    margin-top: 2em;
+    margin-top: 1em;
     margin-right: 3em;
     margin-left: 3em;
     background-color: rgb(0,0,0,.75);
-    padding-top: 2em;
+    /* padding-top: 2em; */
     padding-bottom: 2em;
     border-radius: 10px;
 }
@@ -107,7 +111,6 @@ p{
     padding-right: 1em;
     padding-left: 1em;
     margin-right: 1em;
-    margin-padding: 1em;
 }
 .image-container {
     display:flex;
@@ -116,7 +119,7 @@ p{
 }
 .rover-img {
     display:block;
-    margin: 1em;
+    margin: 2em;
     max-height: 300px;
     width: auto;
 }
@@ -127,29 +130,37 @@ p{
     justify-content: center;
 
 }
-fieldset {
-    padding: 2em;    
-    padding-right: 1em;
-    padding-left: 1em;
+.card {
+    padding-bottom: 2em;   
     display: flex;
     justify-content:center;
     justify-content: base;
     border-radius: 10px;
+    border-color: grey;
+    background-color: rgb(53, 58, 63, .35)
 } 
-legend {
+.card-header {
     padding: .2em;
-    padding-right: .5em;
-    padding-left: .5em;
+    border-color: grey;
+    /* padding-right: .5em; */
+    /* padding-left: .5em; */
+    /* background-color:rgb(130,0,0); */
     text-align: center;
-    border: 1px white solid;
+    /* border: 1px white solid; */
     border-radius: 20px;
 }
-#rover-select {
-    margin-right: 1em;
+#date {
+    /* height: 50px; */
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
 }
 .rover-settings{
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 #info {
     display: flex;
@@ -178,19 +189,32 @@ select.faveList {
     align-self: center;
     max-width: 200px;
 }
-@media screen and (min-width: 375){
+#camBtn {
+    display: flex;
+    border-radius: 10px;
+}
+@media (min-width: 375){
     .rover-img {
         max-height: 250px;
         width: auto;
     }
+
+    #rover-select {
+        margin-bottom: 1em;
+        background: black;
+    }
 }
-@media screen and (min-width: 680px, max-width: 799px){
+@media (min-width: 680px, max-width: 799px){
     .rover-img { 
         max-height: 400px;
         width: auto;
     }
+
+    #rover-select {
+        margin-bottom: 1em;
+    }
 }
-@media screen and (min-width: 800px){
+@media (min-width: 800px){
     .rover-img { 
         max-height: 500px;
         width: auto;
@@ -202,4 +226,5 @@ select.faveList {
 }
 #dateTxt {
     font-size: 8pt;
+    margin: 1em;
 }
