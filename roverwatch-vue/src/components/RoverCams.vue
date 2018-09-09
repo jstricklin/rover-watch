@@ -23,8 +23,8 @@
 
                         </select>
                         <div>
-                            <button v-on:click="addFave" id="addFave">add fave</button>        
-                            <button v-on:click="removeFave" id="removeFave">remove fave</button>        
+                            <button v-on:click="addFave" id="addFave"><p>add fave</p></button>        
+                            <button v-on:click="removeFave" id="removeFave"><p>remove fave</p></button>        
                         </div>
                     </div>
                 </div>

@@ -186,12 +186,22 @@ p{
     margin-top: 1em;
 }
 
-.fave-container button {
+.fave-container div button {
+    font-size: 6pt;
     margin-top: 1em;
-    font-size: 80%;
+    border-radius: 5px;
+}
+.fave-container div button p {
+    color: black;
 }
 .main-title {
     margin-bottom:1em;
+}
+#addFave p {
+    color: darkgreen;
+}
+#removeFave p {
+    color: darkred;
 }
 select.faveList {
     background-color: white;
@@ -215,6 +225,9 @@ button h2 {
 #rover-status p {
     margin-top: 1em;
     font-size: 8pt;
+}
+#date {
+    border-radius: 5px;
 }
 #dateTxt {
     font-size: 8pt;
