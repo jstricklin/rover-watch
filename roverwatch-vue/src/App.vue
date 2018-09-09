@@ -37,11 +37,11 @@ export default {
 }
 </script>
 <style>
-@import '../../styles/normalize.css',
+@import './styles/normalize.css',
 a {
     text-decoration: none;
 }
 </style>
 <style>
-@import '../../styles/main.css'
+@import './styles/main.css'
 </style>
