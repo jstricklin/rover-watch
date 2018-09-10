@@ -42,7 +42,9 @@
                         <h3>Whoops!</h3></br><p> No Images for selected date. Please try again.</p>
                     </div>
                     <div v-if="roverJSON" class="image-container">
-                        <img v-for='photo in roverJSON.photos' class="rover-img" :src="photo.img_src"/>
+                        <transition-group name="fade" mode="out-in">
+                            <img v-for='photo in roverJSON.photos' :key="photo.img_src" class="rover-img" :src="photo.img_src"/>
+                        </transition-group>
                     </div>
                 </div>
             </div>
@@ -105,8 +107,7 @@ export default {
                 this.date = e.target.options[e.target.selectedIndex].getAttribute('data-date')
                 this.selectedRover = e.target.options[e.target.selectedIndex].getAttribute("data-rover")
             }
-        }
-        ,
+        },
         addFave: function(event){
             event.preventDefault()
             if (this.date === "") {
@@ -158,7 +159,7 @@ export default {
                 case "spirit" :
                     this.color = "text-danger"
                     this.date = '2009-11-06'
-this.roverStatus="Offline since March 22, 2010"
+                    this.roverStatus="Offline since March 22, 2010"
                     break
             }
 

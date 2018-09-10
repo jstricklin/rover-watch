@@ -4,9 +4,11 @@
             <div class="row d-flex justify-content-center">
                 <main class="col-sm-10 pt-3">
                 <Header></Header>
-                <NavBar class="pt-3 main-nav" v-on:clicked="linkClicked"></NavBar>
+                <NavBar class="pt-3 main-nav"></NavBar>
                 <section class="main">
-                    <router-view/>
+                    <transition name='fade' mode="out-in" @beforeLeave="beforeLeave" @enter="enter" @afterEnter="afterEnter">
+                        <router-view/>
+                    </transition>
                 </section>
                 </main>
             </div>
@@ -28,10 +30,29 @@ export default {
         Header,
         NavBar,
     },
-    methods: {
-        linkClicked: function (e){
-            console.log(e)
+    data(){
+        return {
+            prevHeight: 0,
         }
+    },
+    methods: {
+        beforeLeave: function(){
+            let element = document.querySelector(".main")
+            this.prevHeight = getComputedStyle(element).height
+        },    
+        enter: function(){
+            let element = document.querySelector(".main")
+            const { height } = getComputedStyle(element)
+            element.style.height = this.prevHeight
+
+            setTimeout(() => {
+                element.style.height = height
+            })
+        },    
+        afterEnter: function(){
+            let element = document.querySelector(".main")
+            element.style.height  = 'auto'
+        },    
     },
     mounted(){
 
@@ -39,5 +60,17 @@ export default {
 }
 </script>
 <style>
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: -1.3s;
+  transition-property: height, opacity;
+  transition-timing-function: ease;
+  overflow: hidden;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
     
 </style>
